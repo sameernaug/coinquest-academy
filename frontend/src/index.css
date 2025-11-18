@@ -1,0 +1,267 @@
+/** @format */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    /* Gamified color palette - Duolingo inspired */
+    --primary: 123 61% 41%; /* Bright Green #58CC02 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 98% 48%; /* Bright Blue #1CB0F6 */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 48 100% 50%; /* Yellow #FFD900 */
+    --accent-foreground: 0 0% 9%;
+
+    --success: 168 100% 40%; /* Teal #00CD9C */
+    --success-foreground: 0 0% 100%;
+
+    --profit: 168 100% 40%; /* Same as success for stock profits */
+    --loss: 0 100% 64%; /* Red for stock losses */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 123 61% 41%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(123 61% 41%),
+      hsl(123 61% 50%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(199 98% 48%),
+      hsl(199 98% 58%)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(48 100% 50%),
+      hsl(48 100% 60%)
+    );
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 20px rgba(88, 204, 2, 0.3);
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0 0% 9%; /* YouTube-style dark background #181818 */
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 12%; /* Slightly elevated cards #1f1f1f */
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 142 76% 36%; /* Darker green for dark mode #16a34a */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 199 98% 52%; /* Brighter blue for dark mode */
+    --secondary-foreground: 0 0% 9%;
+
+    --accent: 48 96% 53%; /* Slightly darker yellow for dark mode */
+    --accent-foreground: 0 0% 9%;
+
+    --success: 142 76% 36%; /* Match primary green */
+    --success-foreground: 0 0% 98%;
+
+    --profit: 142 76% 36%;
+    --loss: 0 91% 71%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --muted: 0 0% 15%; /* YouTube-style muted background #262626 */
+    --muted-foreground: 0 0% 63%;
+
+    --border: 0 0% 20%; /* Subtle borders #333333 */
+    --input: 0 0% 15%;
+    --ring: 142 76% 36%;
+
+    /* Dark mode gradients with darker green */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(142 76% 36%),
+      hsl(142 76% 42%)
+    );
+    --gradient-secondary: linear-gradient(
+      135deg,
+      hsl(199 98% 52%),
+      hsl(199 98% 62%)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      hsl(48 96% 53%),
+      hsl(48 96% 63%)
+    );
+
+    /* Dark mode shadows - subtle like YouTube */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3),
+      0 2px 4px -2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3),
+      0 4px 6px -4px rgb(0 0 0 / 0.3);
+    --shadow-glow: 0 0 20px rgba(22, 163, 74, 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Smooth transitions for theme changes */
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.5s ease-out;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-md);
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  /* Gradients */
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(142 76% 22%), hsl(142 76% 28%));
+  }
+
+  .dark .bg-gradient-primary {
+    background: linear-gradient(135deg, hsl(142 76% 26%), hsl(142 76% 32%));
+  }
+  .bg-gradient-secondary {
+    background: linear-gradient(135deg, hsl(199 98% 48%), hsl(199 98% 58%));
+  }
+
+  .dark .bg-gradient-secondary {
+    background: linear-gradient(135deg, hsl(199 98% 52%), hsl(199 98% 62%));
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(48 100% 50%), hsl(48 100% 60%));
+  }
+
+  .dark .bg-gradient-accent {
+    background: linear-gradient(135deg, hsl(48 96% 53%), hsl(48 96% 63%));
+  }
+
+  /* Dark mode specific utilities */
+  .dark-card-glow {
+    @apply dark:shadow-[0_0_15px_rgba(22,163,74,0.1)];
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
